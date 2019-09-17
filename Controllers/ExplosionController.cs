@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 
 namespace working_with_apis.Controllers
 {
@@ -7,10 +9,10 @@ namespace working_with_apis.Controllers
 
   public class ExplosionController : ControllerBase
   {
-    [HttpGet]
-    public ActionResult<string> Get()
+    [HttpGet("{number}")]
+    public ActionResult<string> ExplosionKata(string number)
     {
-      return "Hello World";
+      return string.Join("", number.Select(c => new String(c, int.Parse(c.ToString()))));
     }
   }
 }
